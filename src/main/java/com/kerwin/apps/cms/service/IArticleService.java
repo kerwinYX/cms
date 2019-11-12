@@ -1,5 +1,6 @@
 package com.kerwin.apps.cms.service;
 
+import com.kerwin.apps.cms.bean.Article;
 import com.kerwin.apps.cms.bean.extend.ArticleExtend;
 
 import java.util.List;
@@ -13,4 +14,6 @@ import java.util.List;
 public interface IArticleService {
 
     List<ArticleExtend> findAll();
+    ArticleExtend findById(Long id);
+    void saveOrUpdate(Article article);
 }

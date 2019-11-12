@@ -1,9 +1,13 @@
 package com.kerwin.apps.cms.web.controller;
 
+import com.kerwin.apps.cms.bean.Article;
 import com.kerwin.apps.cms.bean.extend.ArticleExtend;
 import com.kerwin.apps.cms.service.IArticleService;
+import com.kerwin.apps.cms.utils.Message;
+import com.kerwin.apps.cms.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,15 +31,22 @@ public class ArticleController {
     }
 
     @GetMapping("/find")
-    public List<ArticleExtend>   test(){
-        List<ArticleExtend> all = iArticleService.findAll();
-        System.out.println(all);
-        return all;
+    public Message findAll(){
+        List<ArticleExtend> list = iArticleService.findAll();
+        return MessageUtil.success(list);
     }
 
     @GetMapping("findById")
-    public ArticleExtend findById(Long id){
-        return null;
+    public Message findById(Long id){
+        ArticleExtend byId = iArticleService.findById(id);
+        return MessageUtil.success(byId);
+    }
+
+    @PostMapping("/saveOrUpdate")
+    public Message saveOrUpdate(Article article){
+        iArticleService.saveOrUpdate(article);
+
+        return MessageUtil.success("更新成功！");
     }
 
 }

@@ -10,12 +10,17 @@
                      column="category_id"
                      select="com.kerwin.apps.cms.dao.CategoryMapper.selectByPrimaryKey"/>
 
+        <collection
+                property="comments"
+                column="id"
+                select="com.kerwin.apps.cms.dao.extend.CommentExtendMapper.selectByArticleId"/>
 
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">
         select * from cms_article
     </select>
+
     <select id="selectById" parameterType="long" resultMap="BaseResultMap">
         select * from cms_article
         where id = #{id,jdbcType=BIGINT}

@@ -28,7 +28,7 @@ public class Swagger2 {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				.title("kerwin-CMS系统")
-				.description("昆山杰普软件科技有限公司，http://www.kerwin.com")
+				.description("http://www.kerwin.com")
 				.termsOfServiceUrl("http://www.kerwin.com")
 				.version("1.0")
 				.build();

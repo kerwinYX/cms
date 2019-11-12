@@ -14,6 +14,11 @@ import java.util.List;
  * @date 2019/11/12 - 10:26
  */
 public class ArticleExtend extends Article {
+
+    public static final String STATUS_UNCHECK = "未审核";
+    public static final String STATUS_CHECK_PASS = "审核通过";
+    public static final String STATUS_CHECK_NOPASS = "审核未通过";
+
     private Category category;
     private User user;
     private List<Comment> comments;
