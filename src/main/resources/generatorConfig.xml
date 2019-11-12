@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybatis-generator的核心配置文件 -->
+<generatorConfiguration>
+
+  <classPathEntry location="F:\maven_repo\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" />
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+
+     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/cms"
+        userId="kerwin"
+        password="kerwin">
+      <!--产生selectByPrimaryKey-->
+      <property name="useInformationSchema" value="true" />
+    </jdbcConnection>
+
+
+	<!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!--自动生成的实体的存放包路径 -->
+    <javaModelGenerator targetPackage="com.kerwin.apps.cms.bean" targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!--自动生成的*Mapper.xml文件存放路径 -->
+    <sqlMapGenerator targetPackage="mapper"  targetProject="./src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!--自动生成的*Mapper.java存放路径 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.kerwin.apps.cms.dao"
+                         targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+
+	<!-- 映射配置 -->
+    <!---->
+
+      <!--&lt;!&ndash;测试&ndash;&gt;-->
+    <!--<table tableName="test" domainObjectName="Test" />-->
+      <!--&lt;!&ndash;用户&ndash;&gt;-->
+    <!--<table tableName="cms_user" domainObjectName="User" />-->
+      <!--&lt;!&ndash;角色&ndash;&gt;-->
+    <!--<table tableName="cms_role" domainObjectName="Role" />-->
+      <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--<table tableName="cms_user_role" domainObjectName="User_Role" />-->
+      <!--&lt;!&ndash;栏目&ndash;&gt;-->
+    <!--<table tableName="cms_category" domainObjectName="Category" />-->
+        <!--文章-->
+      <table tableName="cms_article" domainObjectName="Article" >
+          <columnOverride column="context" javaType="java.lang.String" jdbcType="VARCHAR" />
+          <columnOverride column="source" javaType="java.lang.String" jdbcType="VARCHAR" />
+      </table>
+      <!--评论-->
+      <!--<table tableName="cms_comment" domainObjectName="Comment" />-->
+       <!---->
+      <!--&lt;!&ndash;权限&ndash;&gt;-->
+    <!--<table tableName="cms_role_privilege" domainObjectName="Role_Privilege" />-->
+      <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--<table tableName="cms_privilege" domainObjectName="Privilege" />-->
+      <!--&lt;!&ndash;日志&ndash;&gt;-->
+    <!--<table tableName="cms_logs" domainObjectName="Logs" />-->
+
+
+	<!--
+	 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+	-->
+
+
+
+  </context>
+</generatorConfiguration>
