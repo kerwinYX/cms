@@ -6,14 +6,21 @@
     <resultMap id="BaseResultMap" type="com.kerwin.apps.cms.bean.extend.ArticleExtend"
                extends="com.kerwin.apps.cms.dao.ArticleMapper.BaseResultMap">
 
+        <!--得到该文章所对应的栏目信息-->
         <association property="category"
                      column="category_id"
                      select="com.kerwin.apps.cms.dao.CategoryMapper.selectByPrimaryKey"/>
 
+        <!--得到该文章的作者信息-->
+        <association property="user" javaType="com.kerwin.apps.cms.bean.User" column="author_id"
+                     select="com.kerwin.apps.cms.dao.UserMapper.selectByPrimaryKey"/>
+
+        <!--得到该文章的所有评论以及其子评论信息-->
         <collection
                 property="comments"
                 column="id"
                 select="com.kerwin.apps.cms.dao.extend.CommentExtendMapper.selectByArticleId"/>
+
 
     </resultMap>
 

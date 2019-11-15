@@ -19,7 +19,11 @@ public class MyExceptionHandler {
     @ExceptionHandler(MyException.class) // 捕获 Controller 中抛出的指定类型的异常，也可以指定其他异常
     public Message handler(Exception exception){
         exception.printStackTrace();
-        return MessageUtil.error(exception.getMessage());
+        if (exception instanceof MyException){
+
+            return MessageUtil.error(exception.getMessage());
+        }
+        return MessageUtil.error("后台接口异常");
     }
 
 }

@@ -15,4 +15,5 @@ public interface ArticleExtendMapper {
     List<ArticleExtend> selectAll();
 
     ArticleExtend selectById(Long id);
+
 }

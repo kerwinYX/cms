@@ -6,6 +6,7 @@ import com.kerwin.apps.cms.bean.extend.ArticleExtend;
 import com.kerwin.apps.cms.config.MyException;
 import com.kerwin.apps.cms.dao.ArticleMapper;
 import com.kerwin.apps.cms.dao.extend.ArticleExtendMapper;
+import com.kerwin.apps.cms.dao.extend.CommentExtendMapper;
 import com.kerwin.apps.cms.service.IArticleService;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +26,15 @@ public class ArticleServiceImpl implements IArticleService {
     private ArticleExtendMapper articleExtendMapper;
     @Resource
     private ArticleMapper articleMapper;
+    @Resource
+    private CommentExtendMapper commentExtendMapper;
 
     @Override
     public List<ArticleExtend> findAll() {
         return articleExtendMapper.selectAll();
     }
+
+
 
     @Override
     public ArticleExtend findById(Long id) {
