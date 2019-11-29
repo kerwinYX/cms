@@ -20,7 +20,6 @@ public class ArticleExtend extends Article {
     public static final String STATUS_CHECK_NOPASS = "审核未通过";
 
     private Category category;
-    private User user;
     private List<Comment> comments;
 
     public List<Comment> getComments() {
@@ -31,11 +30,6 @@ public class ArticleExtend extends Article {
         this.comments = comments;
     }
 
-
-
-    public ArticleExtend() {
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -44,11 +38,4 @@ public class ArticleExtend extends Article {
         this.category = category;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

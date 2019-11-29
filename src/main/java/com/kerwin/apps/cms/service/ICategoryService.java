@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface ICategoryService {
     List<Category> findAll();
+    Category findById(Long id);
     void saveOrUpdate(Category category) throws MyException;
     void deleteById(Long id) throws MyException;
     void batchDelete(Long[] ids) throws MyException;

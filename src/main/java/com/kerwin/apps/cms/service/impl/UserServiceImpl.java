@@ -1,11 +1,15 @@
 package com.kerwin.apps.cms.service.impl;
 
 import com.kerwin.apps.cms.bean.User;
+import com.kerwin.apps.cms.bean.extend.UserExtend;
+import com.kerwin.apps.cms.config.MyException;
 import com.kerwin.apps.cms.dao.UserMapper;
 import com.kerwin.apps.cms.service.IUserService;
+import com.kerwin.apps.cms.vm.UserVM;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author kerwin
@@ -19,21 +23,52 @@ public class UserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
 
+//    登录
     @Override
-    public void addUser(User user) {
-        if (userMapper.selectByPrimaryKey(user.getId()) != null){
-            userMapper.updateByPrimaryKey(user);
-            System.out.println("修改用户成功！");
-        }else {
-            userMapper.insert(user);
-            System.out.println("添加用户成功！");
-        }
+    public User login(UserVM userVM) throws MyException {
+        return null;
     }
 
+
+//    通过所有
     @Override
-    public void deleteUser(Long id) {
-        userMapper.deleteByPrimaryKey(id);
-        System.out.println("删除成功");
+    public List<User> findAll() {
+        return null;
     }
 
+//    级联查询所有
+    @Override
+    public List<UserExtend> cascadeRoleFindAll() {
+        return null;
+    }
+
+//    保存或更新
+    @Override
+    public void saveOrUpdate(User User) throws MyException {
+
+    }
+
+//    更新状态
+    @Override
+    public void changeStatus(long id, String status) throws MyException {
+
+    }
+
+//    通过id删除
+    @Override
+    public void deleteById(long id) throws MyException {
+
+    }
+
+//    设置角色
+    @Override
+    public void setRoles(long id, List<Long> roles) {
+
+    }
+
+//    通过id查询
+    @Override
+    public UserExtend findById(Long id) {
+        return (UserExtend) userMapper.selectByPrimaryKey(id);
+    }
 }

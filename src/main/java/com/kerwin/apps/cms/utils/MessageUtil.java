@@ -1,5 +1,7 @@
 package com.kerwin.apps.cms.utils;
 
+import java.util.Date;
+
 /**
  * @author kerwin
  * @title: MessageUtil
@@ -7,44 +9,71 @@ package com.kerwin.apps.cms.utils;
  * @date 2019/11/12 - 15:17
  */
 public class MessageUtil {
-
-//    错误信息格式   用于增删改操作的结果返回
+    /**
+     * 返回失败消息，一般用于增删改操作的结果返回
+     * */
     public static Message error(String msg){
         Message message = new Message();
         message.setStatus(500);
         message.setMessage(msg);
-        message.setTimestamp(System.currentTimeMillis());
+        message.setTimestamp(new Date().getTime());
         return message;
     }
 
-
-//    成功信息格式    用于增删改操作的结果返回
+    /**
+     * 返回成功消息，一般用于增删改操作的结果返回
+     * */
     public static Message success(String msg){
         Message message = new Message();
         message.setStatus(200);
         message.setMessage(msg);
-        message.setTimestamp(System.currentTimeMillis());
+        message.setTimestamp(new Date().getTime());
         return message;
     }
-
-
-    //    错误信息格式   用于查询操作的结果返回
-    public static Message error(String msg,Object data){
+    /**
+     * 返回成功的消息，一般用于查询操作的结果返回
+     * */
+    public static Message success(String msg,Object data){
         Message message = new Message();
-        message.setStatus(500);
-        message.setData(data);
+        message.setStatus(200);
         message.setMessage(msg);
-        message.setTimestamp(System.currentTimeMillis());
+        message.setData(data);
+        message.setTimestamp(new Date().getTime());
         return message;
     }
 
-    //    成功信息格式    用于增删改操作的结果返回
+    /**
+     * 返回成功的消息，一般用于查询操作的结果返回
+     * */
     public static Message success(Object data){
         Message message = new Message();
         message.setStatus(200);
         message.setMessage("success");
         message.setData(data);
-        message.setTimestamp(System.currentTimeMillis());
+        message.setTimestamp(new Date().getTime());
         return message;
     }
+
+    /**
+     * 权限不足
+     */
+    public static Message forbidden(String msg){
+        Message message = new Message();
+        message.setStatus(403);
+        message.setMessage(msg);
+        message.setTimestamp(new Date().getTime());
+        return message;
+    }
+
+    /**
+     * 未授权
+     */
+    public static Message unAuthorized(String msg){
+        Message message = new Message();
+        message.setStatus(401);
+        message.setMessage(msg);
+        message.setTimestamp(new Date().getTime());
+        return message;
+    }
+
 }

@@ -22,6 +22,12 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Resource
     private CategoryMapper categoryMapper;
+
+    @Override
+    public Category findById(Long id) {
+        return categoryMapper.selectByPrimaryKey(id);
+    }
+
     @Override
     public List<Category> findAll() {
         return categoryMapper.selectByExample(new CategoryExample());
@@ -46,7 +52,10 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public void deleteById(Long id) throws MyException {
         //            判断栏目Id是否存在
-        CategoryExample example = new CategoryExample();
+        Category category = categoryMapper.selectByPrimaryKey(id);
+        if(category == null){
+            throw new MyException("要删除的栏目不存在");
+        }
 
 
         categoryMapper.selectByPrimaryKey(id);
